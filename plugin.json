@@ -1,0 +1,13 @@
+{
+    "id": "benchmark",
+    "version": "0.0.2",
+    "meta": {
+        "label": "Benchmark",
+        "description": "Evaluate an API endpoint speed and sucess rate using Apache Bench.",
+        "author": "Dataiku (Jed Dougherty)",
+        "icon": "icon-stethoscope",
+        "licenseInfo": "Apache Software License",
+        "url": "https://www.dataiku.com/dss/plugins/info/benchmark.html",
+        "tags": ["Testing", "API Node"]
+    }
+}

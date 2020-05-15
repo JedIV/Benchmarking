@@ -1,0 +1,117 @@
+{
+    "meta": {
+        "label": "Benchmarking",
+        "description": "Benchmarking of Dataiku API endpoints using Apache Bench",
+        "icon": "icon-stethoscope"
+    },
+
+    /* whether the runnable's code is untrusted */
+    "impersonate": false,
+
+    /* list of required permissions on the project to see/run the runnable */
+    "permissions": [],
+
+    /* what the code's run() returns:
+       - NONE: no result
+       - HTML: a string that is a html (utf8 encoded)
+       - FOLDER_FILE: a (folderId, path) pair to a file in a folder of this project (json-encoded)
+       - FILE: raw data (as a python string) that will be stored in a temp file by DSS
+       - URL: a url
+     */
+    "resultType": "HTML",
+
+    /* label to use when the runnable's result is not inlined in the UI (ex: for urls) */
+    "resultLabel": "my production",
+
+    /* for FILE resultType, the extension to use for the temp file */
+    "extension": "txt",
+
+    /* for FILE resultType, the type of data stored in the temp file */
+    "mimeType": "text/plain",
+
+    /* The field "params" holds a list of all the params
+       for wich the user will be prompted for values:
+
+       The available parameter types are:
+       STRING, INT, DOUBLE, BOOLEAN, PASSWORD, SELECT, MAP, TEXTAREA
+    */
+
+    "params": [
+        {
+            "name": "url",
+            "label": "URL and port of API endopoint",
+            "type": "STRING",
+            "description":"If you are running on localhost use 127.0.0.1 instead",
+            "defaultValue": "http://127.0.0.1:11050",
+            "mandatory": true
+        },
+        {
+            "name": "service",
+            "label": "Service ID",
+            "type": "STRING",
+            "description":"Name of the service, as listed on the API node",
+            "mandatory": true
+        },
+        {
+            "name": "endpoint",
+            "label": "Endpoint ID",
+            "type": "STRING",
+            "description":"Name of the endpoint, as listed on the API node",
+            "mandatory": true
+        },
+
+        {
+            "name": "endpoint_type",
+            "label": "Endpoint Type",
+            "type": "SELECT",
+            "selectChoices": [
+                {
+                    "value": "prediction",
+                    "label": "Prediction endpoint"
+                },
+                {
+                    "value": "code",
+                    "label": "Code endpoint"
+                },
+                {
+                    "value": "sql_query",
+                    "label": "Query endpoint"
+                },
+                {
+                    "value": "dataset_lookup",
+                    "label": "Dataset lookup endpoint"
+                }
+            ]
+        },
+        {
+            "name": "post_variables",
+            "label": "JSON Payload to send to endpoint",
+            "type": "TEXTAREA",
+            "defaultValue": "{\"features\": {\"customerID\": \"eg1hpg\"}}"
+        },
+        {
+            "name": "num_requests",
+            "label": "Requests",
+            "type": "INT",
+            "mandatory": true,
+            "description":"Total number of requests to send to endpoint.",
+            "defaultValue": 100
+        },
+        {
+            "name": "concurrency",
+            "label": "Concurrency",
+            "type": "INT",
+            "mandatory": true,
+            "description":"Number of requests to send at the same time.",
+            "defaultValue": 10
+        },
+        {
+            "name": "api_key",
+            "label": "API Key",
+            "type": "STRING",
+            "mandatory": false,
+            "defaultValue": "",
+            "description":"Not necessary unless endpoint is protected by Basic Auth"
+        }
+    ]
+}
