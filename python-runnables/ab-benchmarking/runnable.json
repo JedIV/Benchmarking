@@ -8,7 +8,7 @@
     /* whether the runnable's code is untrusted */
     "impersonate": false,
 
-    /* list of required permissions on the project to see/run the runnable */
+    /* list of required permissions on the project to see/run the runnable. A cool thing*/
     "permissions": [],
 
     /* what the code's run() returns:
